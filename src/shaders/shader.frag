@@ -20,14 +20,11 @@ void main()
         x = xTemp;
         ++iteration;
     }
-    if (iteration == maxIteration)
-    {
-        color = vec3(0.0f, 0.0f, 0.0f);
-    }
-    else
-    {
-        color = vec3(0.6f, 0.2f, 0.6f);
-    }
+    
+    float t = float(iteration) / float(maxIteration);
+    float rt = 9 * (1 - t) * t*t*t;
+    float gt = 15 * (1 - t) * (1 - t) * t*t;
+    float bt = 8.5f * (1 - t) * (1 - t) * (1 - t) * t;
 
-    fragColor = vec4(color, 1.0f);
+    fragColor = vec4(rt, gt, bt, 1.0f);
 }    
